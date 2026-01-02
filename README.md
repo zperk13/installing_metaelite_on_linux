@@ -4,7 +4,7 @@
 
 ## Installation
 1. [Install winetricks](https://github.com/Winetricks/winetricks?tab=readme-ov-file#installing)
-2. [Install protontricks]. There are several options for installing it. You can use whatever works best for you as long as you get the latest version, but I recommend using [pipx](https://github.com/pypa/pipx). If you do want use pipx, see the [pipx section](#pipx).
+2. [Install protontricks](https://github.com/Matoking/protontricks?tab=readme-ov-file#installation). There are several options for installing it. You can use whatever works best for you as long as you get the latest version, but I recommend using [pipx](https://github.com/pypa/pipx). If you do want use pipx, see the [pipx section](#pipx).
 3. Open Steam, go to your Library, select Elite Dangerous (don't launch it), and click the gear icon
 <img width="959" height="341" alt="image" src="https://github.com/user-attachments/assets/2ea494a4-626e-418a-839f-4242a629e8f2" />
 
