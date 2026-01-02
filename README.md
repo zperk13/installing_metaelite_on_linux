@@ -4,7 +4,7 @@
 
 ## Installation
 1. [Install winetricks](https://github.com/Winetricks/winetricks?tab=readme-ov-file#installing)
-2. [Install protontricks]. There are several options for installing it. You can use whatever works best for you as long as you get the latest version, but I reccomend using [pipx](https://github.com/pypa/pipx). If you do want use pipx, see the [pipx section](#pipx).
+2. [Install protontricks]. There are several options for installing it. You can use whatever works best for you as long as you get the latest version, but I recommend using [pipx](https://github.com/pypa/pipx). If you do want use pipx, see the [pipx section](#pipx).
 3. Open Steam, go to your Library, select Elite Dangerous (don't launch it), and click the gear icon
 <img width="959" height="341" alt="image" src="https://github.com/user-attachments/assets/2ea494a4-626e-418a-839f-4242a629e8f2" />
 
@@ -30,14 +30,14 @@
 14. Now you just have to click "Install"
 <img width="487" height="355" alt="image" src="https://github.com/user-attachments/assets/dda3065e-b473-4c84-8d48-d278cc372aa8" />
 
-Congrats! MetaElite is now installed. However, it is not convient to launch and there are some tweaks that can be made, so continue reading.
+Congrats! MetaElite is now installed. However, it is not convenient to launch and there are some tweaks that can be made, so continue reading.
 
 ## Launching it like a normal application
-To make it so you can launch MetaElite, there are two stpes. Making it a simple command, and making a desktop file. The first part isn't technically neccesary, you can include the script in the desktop file, but that doesn't look great, and will be tricky to work with if you use one of the longer options for launch scripts.
+To make it so you can launch MetaElite, there are two steps. Making it a simple command, and making a desktop file. The first part isn't technically neccesary, you can include the script in the desktop file, but that doesn't look great, and will be tricky to work with if you use one of the longer options for launch scripts.
 
 If you have a place in particular where you'd like to keep the script that's in `$PATH` or you're fine with editing future references to the command to have a full path, go for it, otherwise, we'll be putting the script in `/usr/local/bin`. 
 
-In your file explorer or terminal, navigate to `/usr/local/bin`. Make a file here called `MetaElite`. You will need root perms to add a file here. If you're in your terminal, you can do `sudoedit /usr/local/bin/MetaElite`. Then set the conents of the file to the following and save it.
+In your file explorer or terminal, navigate to `/usr/local/bin`. Make a file here called `MetaElite`. You will need root perms to add a file here. If you're in your terminal, you can do `sudoedit /usr/local/bin/MetaElite`. Then set the contents of the file to the following and save it.
 ```bash
 #!/usr/bin/env bash
 cd "$HOME/.local/share/Steam/steamapps/compatdata/359320/pfx/drive_c/Program Files/raxxla.org/MetaElite" || exit
@@ -63,14 +63,14 @@ Save the file and now you should be able to launch MetaElite like any other appl
 For some reason, Steam doesn't seem to like launching games if the game's proton is already being used, so you need to launch Elite Dangerous before you launch MetaElite 
 
 ## Font issues
-Most people, if not everyone, has had fonts be rendered incorrectly. The font should look orange, liguaranteeke this:
+Most people, if not everyone, has had fonts be rendered incorrectly. The font should look orange, like this:
 <img width="372" height="182" alt="image" src="https://github.com/user-attachments/assets/b9297569-f262-489b-8119-a9acbf5240eb" />
 
 however for you, it's probably white. That's ok, you can fix it with one command! Just run `protontricks 359320 settings fontsmooth=rgb`
 
 
 # Overlay issues
-First off, the overlay is not neccessary to use MetaElite. It is cool and nice to have though. Not everyone has had issues with the overlay, but some people have. I wrote a script that will hopefuly fix it for you. It only works on x11 however, not Wayland. If you're not sure which you're on, the command `echo $XDG_SESSION_TYPE` should tell you. If you're on Wayland and are having trouble with the overlay, reach out in the #linux channel on the [MetaElite Discord](https://discord.com/invite/BnMdzncKW6).
+First off, the overlay is not necessary to use MetaElite. It is cool and nice to have though. Not everyone has had issues with the overlay, but some people have. I wrote a script that will hopefully fix it for you. It only works on x11 however, not Wayland. If you're not sure which you're on, the command `echo $XDG_SESSION_TYPE` should tell you. If you're on Wayland and are having trouble with the overlay, reach out in the #linux channel on the [MetaElite Discord](https://discord.com/invite/BnMdzncKW6).
 
 First off, the script requires [xdotool](https://github.com/jordansissel/xdotool). Here's the command to install it for several distributions:
 - Debian and Ubuntu: `apt-get install xdotool`
