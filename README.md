@@ -70,7 +70,7 @@ however for you, it's probably white. That's ok, you can fix it with one command
 
 
 # Overlay issues
-First off, the overlay is not necessary to use MetaElite. It is cool and nice to have though. Not everyone has had issues with the overlay, but some people have. I wrote a script that will hopefully fix it for you. It only works on x11 however, not Wayland. If you're not sure which you're on, the command `echo $XDG_SESSION_TYPE` should tell you. If you're on Wayland and are having trouble with the overlay, reach out in the #linux channel on the [MetaElite Discord](https://discord.com/invite/BnMdzncKW6).
+First off, the overlay is not necessary to use MetaElite. It is cool and nice to have though. Not everyone has had issues with the overlay, but some people have. I wrote a script that will hopefully fix it for you. The script only works on x11 however, not Wayland. If you're not sure which you're on, the command `echo $XDG_SESSION_TYPE` should tell you. If you're on Wayland and are having trouble with the overlay, reach out in the #linux channel on the [MetaElite Discord](https://discord.com/invite/BnMdzncKW6).
 
 First off, the script requires [xdotool](https://github.com/jordansissel/xdotool). Here's the command to install it for several distributions:
 - Debian and Ubuntu: `apt-get install xdotool`
