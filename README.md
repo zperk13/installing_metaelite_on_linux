@@ -6,7 +6,7 @@
 1. [Install winetricks](https://github.com/Winetricks/winetricks?tab=readme-ov-file#installing)
 2. [Install protontricks](https://github.com/Matoking/protontricks?tab=readme-ov-file#installation). There are several options for installing it. You can use whatever works best for you as long as you get the latest version, but I recommend using [pipx](https://github.com/pypa/pipx). If you do want use pipx, see the [pipx section](#pipx).
 3. Open Steam, go to your Library, select Elite Dangerous (don't launch it), and click the gear icon
-<img width="959" height="341" alt="image" src="https://github.com/user-attachments/assets/2ea494a4-626e-418a-839f-4242a629e8f2" />
+<img width="959" height="341" alt="Cropped screenshot of Steam with a red arrow pointing to wear the gear is. It is to the left of the heart and info symbol, on the right of the window." src="https://github.com/user-attachments/assets/2ea494a4-626e-418a-839f-4242a629e8f2" />
 
 4. Click "Compatibility"
 5. Make sure the "Force the use of a specific Steam Play compatibility tool" checkbox is checked
@@ -15,20 +15,20 @@
 8. In the terminal, `cd` into the folder with the `.msi` file. If you put it in your downloads folder, the command will probably be `cd ~/Downloads`
 9. Run `protontricks-launch --appid 359320 ./MetaElite-1.01.msi` (Update 1.01 may not be the latest version if you're reading this in the future) (359320 is the ID for Elite Dangerous)
 10. You should now be seeing the installer
-<img width="482" height="344" alt="image" src="https://github.com/user-attachments/assets/cc5fd172-caca-46dc-83e0-4fb992ed114d" />
+<img width="482" height="344" alt="Picture of the installer. It says Welcome to the MetaElite Setup Wizard. The Setup Wizard will install MetaElite on your computer. MetaElite integrates community-driven rote playing with the Elite: Dangerous game. Click Next to continue or Cancel to exit the Setup Wizard." src="https://github.com/user-attachments/assets/cc5fd172-caca-46dc-83e0-4fb992ed114d" />
 
 11. Click "Next"
 12. You should now see the End-User License Agreement. I'm sure you know what to do here
-<img width="475" height="347" alt="image" src="https://github.com/user-attachments/assets/7ddb06d4-0cc9-452b-bd60-5c32bb570c31" />
+<img width="475" height="347" alt="Picture of the EULA section of the installer" src="https://github.com/user-attachments/assets/7ddb06d4-0cc9-452b-bd60-5c32bb570c31" />
 
 13. You should now bee seeing the option to select the destination folder. Leave it as the default `C:\Program Files\raxxla.org\MetaElite\` and click "Next"
-<img width="487" height="348" alt="image" src="https://github.com/user-attachments/assets/96abe602-ca12-4dec-9a52-8f1d214cc439" />
+<img width="487" height="348" alt="Picture of the installer. It says Destination Folder. Click Next to install to the default folder or click Change to choose another." src="https://github.com/user-attachments/assets/96abe602-ca12-4dec-9a52-8f1d214cc439" />
 
 13. You should now be seeing the option to create a desktop and start menu shortcut. Uncheck both of these boxes. Because this is running via wine/proton, it will not do what you expect it to do, and will just create unnecessary files. Then click "Next"
-<img width="490" height="358" alt="image" src="https://github.com/user-attachments/assets/cb5db5ba-dd0b-4a0b-ab54-9867212808e7" />
+<img width="490" height="358" alt="Picture of the installer. At the top it says Installation Options. Select which shortcuts you want to create. Both the Create Desktop Shortcut and Create Start Menu shortcut checkboxes are unchecked." src="https://github.com/user-attachments/assets/cb5db5ba-dd0b-4a0b-ab54-9867212808e7" />
 
 14. Now you just have to click "Install"
-<img width="487" height="355" alt="image" src="https://github.com/user-attachments/assets/dda3065e-b473-4c84-8d48-d278cc372aa8" />
+<img width="487" height="355" alt="Picture of the installer. It says Ready to install MetaElite. Click Install to begin the installation. Click Back to review or change any of your installation settings. Click Cancel to exit the wizard." src="https://github.com/user-attachments/assets/dda3065e-b473-4c84-8d48-d278cc372aa8" />
 
 Congrats! MetaElite is now installed. However, it is not convenient to launch and there are some tweaks that can be made, so continue reading.
 
