@@ -40,11 +40,11 @@ If you have a place in particular where you'd like to keep the script that's in 
 In your file explorer or terminal, navigate to `/usr/local/bin`. Make a file here called `MetaElite`. You will need root perms to add a file here. If you're in your terminal, you can do `sudoedit /usr/local/bin/MetaElite`. Then set the contents of the file to the following and save it.
 ```bash
 #!/usr/bin/env bash
-cd "$HOME/.local/share/Steam/steamapps/compatdata/359320/pfx/drive_c/Program Files/raxxla.org/MetaElite" || exit
-protontricks-launch --appid 359320 ./MetaElite*.exe
+elite_dangerous_id=359320
+pfx="$(protontricks --command 'echo $WINEPREFIX' "$elite_dangerous_id" 2>/dev/null)"
+cd "$pfx/drive_c/Program Files/raxxla.org/MetaElite" || exit
+protontricks-launch --appid "$elite_dangerous_id" ./MetaElite*.exe
 ```
-> [!IMPORTANT]
-> If you have Elite Dangerous installed somewhere that isn't the default location, you will need to edit the first part of that path.
 
 Now that you have the script file, you need to make it executable, otherwise Linux will just think it's a normal text file. To do that, run this command `sudo chmod +x /usr/local/bin/MetaElite` (+x means make it e***X***ecutable).
 
@@ -78,11 +78,14 @@ First off, the script requires [xdotool](https://github.com/jordansissel/xdotool
 - OpenSUSE: `zypper install xdotool`
 - Arch: `pacman -S xdotool`
 
-Once it's installed, edit the script you made earlier to be the following instead (again, edit that path at the top if needed):
+Once it's installed, edit the script you made earlier to be the following instead:
 ```bash
 #!/usr/bin/env bash
-cd "$HOME/.local/share/Steam/steamapps/compatdata/359320/pfx/drive_c/Program Files/raxxla.org/MetaElite" || exit
-protontricks-launch --appid 359320 ./MetaElite*.exe >/dev/null 2>&1 &
+
+elite_dangerous_id=359320
+pfx="$(protontricks --command 'echo $WINEPREFIX' "$elite_dangerous_id" 2>/dev/null)"
+cd "$pfx/drive_c/Program Files/raxxla.org/MetaElite" || exit
+protontricks-launch --appid "$elite_dangerous_id" ./MetaElite*.exe >/dev/null 2>&1 &
 
 # In case MetaElite crashes or something and stops the loops from working,
 # the script will check if it's been more than 120 seconds since launch.
