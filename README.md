@@ -87,54 +87,38 @@ pfx="$(protontricks --command 'echo $WINEPREFIX' "$elite_dangerous_id" 2>/dev/nu
 cd "$pfx/drive_c/Program Files/raxxla.org/MetaElite" || exit
 protontricks-launch --appid "$elite_dangerous_id" ./MetaElite*.exe >/dev/null 2>&1 &
 
-# In case MetaElite crashes or something and stops the loops from working,
-# the script will check if it's been more than 120 seconds since launch.
-# If so, it will shut down the script so it doesn't run in the background of your computer ad infinitum (or until you kill it or reboot)
-# I (Zoe) figure 120 is plenty enough time to download a potential update and for MetaElite to do all it's launching things
+# I (Zoe) figure 120 is plenty enough time to download a potential update
+# and for MetaElite to do all it's launching things.
+# If it isn't, you can change the number.
+# If you launch and close MetaElite multiple times within the timeframe,
+# and the overlay wasn't on,
+# there may be multiple versions of the script running until the time passes.
+# This shouldn't cause much of an issue,
+# worst case scenario I think is the overlay maybe flickering a bit at first when you turn it on,
+# and slightly wasted computing power,
+# but this isn't exactly a computationally heavy script.
 starttime="$(date +%s)"
 maxtime=120
-
-function wait_till_metaelite {
-    while true; do
-        if xdotool search --name '^MetaElite$' > /dev/null; then
-            echo 'Breaking wait_till_metaelite check loop'
-            break
-        elif (( "$(date +%s)" - starttime > maxtime )); then
-            echo "too much time"
-            exit
-        fi
-    done
-
-}
-
-function wait_till_no_metaelite {
-    while true; do
-        if ! xdotool search --name '^MetaElite$' > /dev/null; then
-            echo 'Breaking wait_till_no_metaelite check loop'
-            break
-        elif (( "$(date +%s)" - starttime > maxtime )); then
-            echo "too much time"
-            exit
-        fi
-    done
-}
-
-wait_till_metaelite # The initial launcher. This handles updating MetaLens
-wait_till_no_metaelite # Eventually the initial launcher will close itself
-wait_till_metaelite # MetaLens. Title is still "MetaElite"
+has_seen_overlay=false
 
 overlay_needs_patch=true # If the overlay is "patched" over and over again, it will flicker
 while true; do
-    if ! xdotool search --name '^MetaElite$' > /dev/null; then
-        # If you close MetaLens/MetaElite, then the script doesn't need to run anymore
+    if ! xdotool search --name '^MetaElite$' > /dev/null && ( (( "$(date +%s)" - starttime > maxtime )) || $has_seen_overlay ); then 
         echo "MetaLens has been closed. Shutting down script"
         exit
     fi
     id="$(xdotool search --name "^MetaLens Overlay$")"
     if [ -n "$id" ]; then
+        has_seen_overlay=true
         if $overlay_needs_patch; then
             # https://unix.stackexchange.com/a/680848/
-            xdotool set_window --overrideredirect 1 "$id" && echo "Step 1/3 of patch complete"
+            if xdotool set_window --overrideredirect 1 "$id"; then
+                echo "Step 1/3 of patch complete";
+            else
+                # Sometimes I think xdotool detects it before the window is fully set up. I think 0.2 seconds is enough time for it to finish, and also it's short enough that issues caused by an unpatched overlay is minimal
+                sleep 0.2
+                continue
+            fi
             xdotool windowunmap "$id" && echo "Step 2/3 of patch complete"
             xdotool windowmap "$id" && echo "Step 3/3 of patch complete"
             overlay_needs_patch=false
