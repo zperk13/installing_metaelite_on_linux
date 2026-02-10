@@ -13,7 +13,7 @@
 6. In the drop down menu, select Proton 10.0-3
 7. Download MetaElite from https://raxxla.org/. The downloaded file is a `.msi` file and you will not need to keep it, so you can just throw it in your downloads folder or something.
 8. In the terminal, `cd` into the folder with the `.msi` file. If you put it in your downloads folder, the command will probably be `cd ~/Downloads`
-9. Run `protontricks-launch --appid 359320 ./MetaElite-1.01.msi` (Update 1.01 may not be the latest version if you're reading this in the future) (359320 is the ID for Elite Dangerous)
+9. Run `protontricks-launch --appid 359320 ./MetaElite-1.02.msi` (Update 1.02 may not be the latest version if you're reading this in the future) (359320 is the ID for Elite Dangerous)
 10. You should now be seeing the installer
 <img width="482" height="344" alt="Picture of the installer. It says Welcome to the MetaElite Setup Wizard. The Setup Wizard will install MetaElite on your computer. MetaElite integrates community-driven rote playing with the Elite: Dangerous game. Click Next to continue or Cancel to exit the Setup Wizard." src="https://github.com/user-attachments/assets/cc5fd172-caca-46dc-83e0-4fb992ed114d" />
 
