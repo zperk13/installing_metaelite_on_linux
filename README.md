@@ -82,8 +82,6 @@ Once it's installed, edit the script you made earlier to be the following instea
 ```bash
 #!/usr/bin/env bash
 
-#!/usr/bin/env bash
-
 elite_dangerous_id=359320
 pfx="$(protontricks --command 'echo $WINEPREFIX' "$elite_dangerous_id" 2>/dev/null)"
 cd "$pfx/drive_c/Program Files/raxxla.org/MetaElite" || exit
