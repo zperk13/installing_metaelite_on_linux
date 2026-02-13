@@ -82,6 +82,8 @@ Once it's installed, edit the script you made earlier to be the following instea
 ```bash
 #!/usr/bin/env bash
 
+#!/usr/bin/env bash
+
 elite_dangerous_id=359320
 pfx="$(protontricks --command 'echo $WINEPREFIX' "$elite_dangerous_id" 2>/dev/null)"
 cd "$pfx/drive_c/Program Files/raxxla.org/MetaElite" || exit
@@ -112,15 +114,9 @@ while true; do
         has_seen_overlay=true
         if $overlay_needs_patch; then
             # https://unix.stackexchange.com/a/680848/
-            if xdotool set_window --overrideredirect 1 "$id"; then
-                echo "Step 1/3 of patch complete";
-            else
-                # Sometimes I think xdotool detects it before the window is fully set up. I think 0.2 seconds is enough time for it to finish, and also it's short enough that issues caused by an unpatched overlay is minimal
-                sleep 0.2
-                continue
-            fi
-            xdotool windowunmap "$id" && echo "Step 2/3 of patch complete"
-            xdotool windowmap "$id" && echo "Step 3/3 of patch complete"
+            (xdotool set_window --overrideredirect 1 "$id" && echo "Step 1/3 of patch complete") || continue
+            (xdotool windowunmap "$id" && echo "Step 2/3 of patch complete") || continue 
+            (xdotool windowmap "$id" && echo "Step 3/3 of patch complete") || continue 
             overlay_needs_patch=false
         fi
     else
@@ -134,6 +130,7 @@ while true; do
     sleep 0.1
 done | uniq # uniq is so it doesn't print "Overlay is off" over and over and over again while the overlay is off
 ```
+The script isn't perfect and may require you to turn the overlay off and on once or twice, espcially if you launched MetaLens with it already on.
 
 # pipx
 If you're using [pipx](https://github.com/pypa/pipx) to install protontricks, you'll want to make sure `/home/YOURUSERNAME/.local/bin` is in PATH environment variable. Or you can just replace all uses of protontricks-launch with `/home/YOURUSERNAME/.local/bin/protontricks-launch` I guess. pipx will talk about putting it in the $PATH in your `.bashrc` file, but that won't be sufficient since the script will not load your `.bashrc` file. The best way I've found to guarantee that it's in your path is to edit `/etc/profile`. You can just add the following line to it: `export PATH="$PATH:/home/YOURUSERNAME/.local/bin` (replace YOURUSERNAME with your username. If you don't know what is is, run the command `whoami`)
